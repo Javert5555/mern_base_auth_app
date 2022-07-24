@@ -1,6 +1,6 @@
 import User from './../models/user.model'
 import { extend } from 'lodash'
-import errorHandler from './error.controller.js'
+import errorHandler from './../helpers/dbErrorHandler'
 
 // This function creates a new user with the user JSON object that's received in the POST
 // request from the frontend within req.body. The call to user.save attempts to save
@@ -8,6 +8,15 @@ import errorHandler from './error.controller.js'
 // Consequently, an error or success response is returned to the requesting client.
 
 const create = async (req, res) => {
+
+    const candidate = await User.findOne({ email: req.body.email })
+
+    if (candidate) {
+        return res.status(400).json({
+            error: 'This email already reserved',
+        })
+    }
+
     const user = new User(req.body)
     try {
         await user.save()
@@ -51,11 +60,11 @@ const userByID = async (req, res, next, id) => {
                 error: 'User not found'
             })
         }
-        req.profile(user)
+        req.profile = user
         next()
-    } catch (error) {
+    } catch (err) {
         return res.status(400).json({
-            error: 'Could not retrieve user'
+            error: 'Could not retrieve user',
         })
     }
 }
