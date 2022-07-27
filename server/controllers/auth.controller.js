@@ -15,6 +15,7 @@ import config from './../../config/config'
 // client-side, this token must be attached as an Authorization header when
 // requesting protected routes from the server.
 
+// path: /auth/signin, method: POST
 const signin = async (req, res) => {
     try {
         let user = await User.findOne({ 'email': req.body.email })
@@ -46,6 +47,7 @@ const signin = async (req, res) => {
 
 // The signout function clears the response cookie containing the signed JWT.
 
+// path: /auth/signout, method: GET
 const signout = async (req, res) => {
     res.clearCookie('t')
     return res.status(200).json({
