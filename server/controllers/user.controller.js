@@ -7,15 +7,8 @@ import errorHandler from './../helpers/dbErrorHandler'
 // the new user in the database after Mongoose has performed a validation check on the data.
 // Consequently, an error or success response is returned to the requesting client.
 
+// path: /api/users, method: POST
 const create = async (req, res) => {
-
-    const candidate = await User.findOne({ email: req.body.email })
-
-    if (candidate) {
-        return res.status(400).json({
-            error: 'This email already reserved',
-        })
-    }
 
     const user = new User(req.body)
     try {
@@ -35,6 +28,7 @@ const create = async (req, res) => {
 // name, email, created, and updated fields in the resulting user list, and then returns
 // this list of users as JSON objects in an array to the requesting client.
 
+// path: /api/users, method: GET
 const list = async (req, res) => {
     try {
         let users = await User.find().select('name email updated created')
@@ -52,6 +46,7 @@ const list = async (req, res) => {
 // read a user profile, the next() call in userByID would go to the read controller
 // function, which is discussed next.
 
+// param: :userId
 const userByID = async (req, res, next, id) => {
     try {
         let user = await User.findById(id)
@@ -74,6 +69,7 @@ const userByID = async (req, res, next, id) => {
 // sending the user object in the response to the requesting client. This rule is also
 // followed in implementing the controller function to update a user.
 
+// path: /api/users/:userId, method: GET
 const read = (req, res) => {
     req.profile.hashed_password = undefined
     req.profile.salt = undefined
@@ -89,6 +85,7 @@ const read = (req, res) => {
 // the response to the requesting client. Implementation of the final user controller
 // function to delete a user is similar to the update function.
 
+// path: /api/users/:userId, method: PUT
 const update = async (req, res) => {
     try {
         let user = req.profile
@@ -109,6 +106,7 @@ const update = async (req, res) => {
 // query to delete the user from the database. On successful deletion, the requesting
 // client is returned the deleted user object in the response
 
+// path: /api/users/:userId, method: DELETE
 const remove = async (req, res) => {
     try {
         let user = req.profile
