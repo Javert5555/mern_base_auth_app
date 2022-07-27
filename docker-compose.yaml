@@ -1,0 +1,13 @@
+version: '3.7'
+services:        
+    local-mongo:
+            build:
+                context: ./
+                dockerfile: deploy/mongo/Dockerfile
+            image: local-mongo
+            restart: always
+            container_name: local-mongo-c
+            volumes:
+                    - /home/developer/volumes/mongo/db_data:/data/db
+            ports:
+                    - '10000:27017'
