@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Test from './Test'
+import App from './App'
 
-render(
-    <Test />,
-    document.getElementById('root')
-)
+render(<App />, document.getElementById('root'))
