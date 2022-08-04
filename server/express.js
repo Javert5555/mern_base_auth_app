@@ -23,7 +23,21 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(compress())
-app.use(helmet())
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+
+            // add host name like this: https://az416426.vo.msecnd.net
+            scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+
+            styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+            imgSrc: ["'self'"], // add some ways or just "data"
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: [],
+          },
+    })
+)
 app.use(cors())
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
