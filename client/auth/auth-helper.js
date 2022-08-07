@@ -1,7 +1,7 @@
 import { signout } from "./api-auth"
 
 const auth = {
-    async clearJWT (cb) {
+    clearJWT (cb) {
         if (typeof window !== 'undefined') {
             sessionStorage.removeItem('jwt')
         }
@@ -30,3 +30,5 @@ const auth = {
         cb()
     }
 }
+
+export default auth
