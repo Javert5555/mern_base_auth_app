@@ -9,7 +9,7 @@ const StylizedCard = styled(Card)(({ theme }) => ({
     marginTop: theme.spacing(5)
 }))
 
-const StylizedTypography = styled(Typography)(({ theme }) => ({
+const StylizedTypographyTitle = styled(Typography)(({ theme }) => ({
     padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
     color: theme.palette.openTitle
 }))
@@ -21,14 +21,14 @@ const StylizedMedia = styled(CardMedia)(({ theme }) => ({
 const Home = () => {
     return (
         <StylizedCard>
-            <StylizedTypography variant='h6'>
+            <StylizedTypographyTitle variant='h6'>
                 Home Page
-            </StylizedTypography>
+            </StylizedTypographyTitle>
             <StylizedMedia image={blade_runner} title='Blade Runner' />
             <CardContent>
-                <StylizedTypography variant='body2' component='p'>
+                <StylizedTypographyTitle variant='body2' component='p'>
                     Welcome to the secret shop
-                </StylizedTypography>
+                </StylizedTypographyTitle>
             </CardContent>
         </StylizedCard>
     )
