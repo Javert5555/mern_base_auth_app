@@ -40,8 +40,8 @@ const Signup = () => {
         error: ''
     })
 
-    const handleChange = name => event => {
-        setValues({...values, [name]: event.target.value })
+    const handleChange = name => ({ target }) => {
+        setValues({...values, [name]: target.value })
     }
 
     const clickSubmit = () => {
@@ -50,7 +50,7 @@ const Signup = () => {
             email: values.email || undefined,
             password: values.password || undefined,
         }
-        create(user).then((data) => {
+        create(user).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error})
             } else {
@@ -67,7 +67,7 @@ const Signup = () => {
                         Sign Up
                     </StylizedTypographyTitle>
                     <StylizedTextField id='name' label='Name' value={values.name} onChange={handleChange('name')} margin='normal' />
-                    <StylizedTextField id='email' type='email' label='email' value={values.email} onChange={handleChange('email')} margin='normal' />
+                    <StylizedTextField id='email' type='email' label='Email' value={values.email} onChange={handleChange('email')} margin='normal' />
                     <StylizedTextField id='password' type='password' label='Password' value={values.password} onChange={handleChange('password')} margin='normal' />
                     <br /> {
                         values.error && (<Typography component='p' color='error'>

@@ -1,11 +1,14 @@
 import React from 'react'
-import { Route,  } from 'react-router-dom'
+import { Navigate, Outlet, useLocation,  } from 'react-router-dom'
 import auth from './auth-helper'
 
-const PrivateRoute = ({ path, element }) => (
-    auth.isAuthenticated() ?
-    <Route path={path} element={element} /> :
-    <Route path='*' element={<Navigate to='/signin' state={{ from: location }} replace />} />
-)
+const PrivateRoute = () => {
+    const location = useLocation()
+    return (
+        auth.isAuthenticated() ?
+        <Outlet /> :
+        <Navigate to='/signin' state={{ from: location }} />
+    )
+}
 
 export default PrivateRoute

@@ -1,6 +1,8 @@
 import { signout } from "./api-auth"
 
 const auth = {
+
+    // remove the jwt token from the session storage
     clearJWT (cb) {
         if (typeof window !== 'undefined') {
             sessionStorage.removeItem('jwt')
@@ -12,6 +14,7 @@ const auth = {
 
     },
     
+    // checks if there is a token in the jwt session storage
     isAuthenticated() {
         if (typeof window === 'undefined') {
             return false
@@ -23,6 +26,7 @@ const auth = {
         }
     },
 
+    // places a token in the jwt session storage and then calls the callback function
     authenticate(jwt, cb) {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('jwt', JSON.stringify(jwt))
