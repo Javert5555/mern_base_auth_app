@@ -7,6 +7,7 @@ import Signup from './user/Signup'
 import Signin from './auth/Signin'
 import Profile from './user/Profile'
 import PrivateRoute from './auth/PrivateRoute'
+import EditProfile from './user/EditProfile'
 
 const MainRouter = () => (
         <Box>
@@ -16,7 +17,7 @@ const MainRouter = () => (
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/signin' element={<Signin />} />
                 <Route path='/user/edit/:userId' element={<PrivateRoute />}>
-                    <Route path='/user/edit/:userId' element={<Home />} />
+                    <Route path='/user/edit/:userId' element={<EditProfile />} />
                 </Route>
                 <Route path='/user/:userId' element={<Profile />} />
             </Routes>
