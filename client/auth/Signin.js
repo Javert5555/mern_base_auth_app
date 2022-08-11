@@ -35,7 +35,6 @@ const StylizedButtonSubmit = styled(Button)(({ theme }) => ({
 const Signin = () => {
 
     const location = useLocation()
-    console.log(location)
 
     const [values, setValues] = useState({
         email: '',
@@ -50,8 +49,6 @@ const Signin = () => {
             email: values.email || undefined,
             password: values.password || undefined,
         }
-
-        console.log(user)
 
         signin(user).then(data => {
             if (data.error) {

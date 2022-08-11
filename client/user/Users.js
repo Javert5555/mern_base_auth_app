@@ -9,7 +9,7 @@ const StylizedPaper = styled(Paper)(({ theme }) => ({
     margin: theme.spacing(5)
 }))
 
-const StylizedTypography = styled(Typography)(({ theme }) => ({
+const StylizedTypographyTitle = styled(Typography)(({ theme }) => ({
     margin: theme.spacing(4, 0, 2),
     color: theme.palette.openTitle
 }))
@@ -37,9 +37,9 @@ const Users = () => {
 
     return (
         <StylizedPaper elevation={4}>
-            <StylizedTypography variant="6">
+            <StylizedTypographyTitle variant="6">
                 All Users
-            </StylizedTypography>
+            </StylizedTypographyTitle>
             <List dense>
                 {users.map((item, i) => {
                     return (

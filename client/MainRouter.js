@@ -5,6 +5,7 @@ import Home from './core/Home'
 import Users from './user/Users'
 import Signup from './user/Signup'
 import Signin from './auth/Signin'
+import Profile from './user/Profile'
 import PrivateRoute from './auth/PrivateRoute'
 
 const MainRouter = () => (
@@ -15,10 +16,11 @@ const MainRouter = () => (
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/signin' element={<Signin />} />
                 <Route path='/user/edit/:userId' element={<PrivateRoute />}>
-                    <Route path='/user/edit/:userId' element={<Users />} />
+                    <Route path='/user/edit/:userId' element={<Home />} />
                 </Route>
+                <Route path='/user/:userId' element={<Profile />} />
             </Routes>
-            <Link to={'/signin'}>123</Link>
+            <Link to={'/users'}>123</Link>
         </Box>
 )
 
