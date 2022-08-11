@@ -26,7 +26,6 @@ const Profile = () => {
 
     const params = useParams()
 
-
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
