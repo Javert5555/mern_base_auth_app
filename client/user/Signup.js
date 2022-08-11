@@ -7,7 +7,7 @@ const StylizedCard = styled(Card)(({ theme }) => ({
     maxWidth: 600,
     margin: 'auto',
     textAlign: 'center',
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(14),
     paddingBottom: theme.spacing(2)
 }))
 

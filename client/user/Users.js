@@ -6,7 +6,7 @@ import { list } from './api-user'
 
 const StylizedPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
-    margin: theme.spacing(5)
+    margin: `${theme.spacing(10)} ${theme.spacing(5)} ${theme.spacing(5)}`
 }))
 
 const StylizedTypographyTitle = styled(Typography)(({ theme }) => ({

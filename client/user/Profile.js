@@ -11,7 +11,7 @@ const StylizedRootPaper = styled(Paper)(({ theme }) => ({
     maxWidth: 600,
     margin: 'auto',
     padding: theme.spacing(3),
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(14)
 }))
 
 const StylizedTypographyTitle = styled(Typography)(({ theme }) => ({
