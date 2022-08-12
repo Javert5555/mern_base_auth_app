@@ -4,13 +4,14 @@ import { styled } from '@mui/material/styles'
 import blade_runner from './../assets/images/blade_runner.jpg'
 
 const StylizedCard = styled(Card)(({ theme }) => ({
-    maxWidth: 300,
+    maxWidth: 600,
     margin: 'auto',
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(12),
+    marginBottom: theme.spacing(5)
 }))
 
-const StylizedTypography = styled(Typography)(({ theme }) => ({
-    padding: `${theme.spacing(3)}px ${theme.spacing(2.5)}px ${theme.spacing(2)}px`,
+const StylizedTypographyTitle = styled(Typography)(({ theme }) => ({
+    padding: `${theme.spacing(2)} ${theme.spacing(2.5)}`,
     color: theme.palette.openTitle
 }))
 
@@ -21,14 +22,14 @@ const StylizedMedia = styled(CardMedia)(({ theme }) => ({
 const Home = () => {
     return (
         <StylizedCard>
-            <StylizedTypography variant='h6'>
+            <StylizedTypographyTitle variant='h6'>
                 Home Page
-            </StylizedTypography>
+            </StylizedTypographyTitle>
             <StylizedMedia image={blade_runner} title='Blade Runner' />
             <CardContent>
-                <StylizedTypography variant='body2' component='p'>
+                <Typography variant='body2' component='p'>
                     Welcome to the secret shop
-                </StylizedTypography>
+                </Typography>
             </CardContent>
         </StylizedCard>
     )

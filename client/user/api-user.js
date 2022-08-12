@@ -1,10 +1,10 @@
 const create = async (user) => {
     try {
-        let response = await fetch('/api/user/', {
+        let response = await fetch('/api/users/', {
             method: 'POST',
             headers: {
-                'Accept': 'aplication/json',
-                'Content-Type': 'aplication/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         })
@@ -32,8 +32,8 @@ const read = async (params, credentials, signal) => {
             method: 'GET',
             signal: signal,
             headers: {
-                'Accept': 'aplication/json',
-                'Content-Type': 'aplication/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${credentials.t}`
             }
         })
@@ -48,8 +48,8 @@ const update = async (params, credentials, user) => {
         let response = await fetch(`/api/users/${params.userId}`, {
             method: 'PUT',
             headers: {
-                'Accept': 'aplication/json',
-                'Content-Type': 'aplication/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${credentials.t}`
             },
             body: JSON.stringify(user)
@@ -65,8 +65,8 @@ const remove = async (params, credentials) => {
         let response = await fetch(`/api/users/${params.userId}`, {
             method: 'DELETE',
             headers: {
-                'Accept': 'aplication/json',
-                'Content-Type': 'aplication/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${credentials.t}`
             }
         })
