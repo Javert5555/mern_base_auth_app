@@ -5,12 +5,24 @@ import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 import path from 'path'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom/server'
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache'
+import createEmotionServer from '@emotion/server/create-instance'
+// import MainRouter from './../client/MainRouter'
+import theme from './../client/theme'
 import Template from '../template'
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 
 // comment out before building for production
 import devBundle from './devBundle'
+import App from '../client/App'
+import MainRouter from '../client/MainRouter'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
@@ -46,7 +58,31 @@ app.use('/', userRoutes)
 app.use('/', authRoutes)
 
 app.get('/', (req, res) => {
-    res.status(200).send(Template())
+    // res.status(200).send(Template())
+    const cache = createCache({ key: 'css' })
+    const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache)
+
+    const context = {}
+
+    const markup = ReactDOMServer.renderToString(
+        <StaticRouter location={req.url} context={context}>
+            <CacheProvider value={cache}>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <MainRouter />
+                </ThemeProvider>
+            </CacheProvider>
+        </StaticRouter>
+    )
+
+    const emotionChunks = extractCriticalToChunks(markup);
+    const emotionCss = constructStyleTagsFromChunks(emotionChunks);
+  
+    // Send the rendered page back to the client.
+    res.status(200).send(Template({
+        markup: markup,
+        css: emotionCss
+    }))
 })
 
 // We need the following code to handle the authorization errors that express-jwt
