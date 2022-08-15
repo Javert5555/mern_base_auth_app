@@ -43,7 +43,7 @@ const Profile = () => {
     }, [params.userId])
 
     if (redirectToSignin) {
-        return <Navigate to='/signin' />
+        return <Navigate to='/signin' replace />
     }
 
     return (

@@ -19,7 +19,7 @@ const Menu = () => {
             <AppBar>
                 <Toolbar>
                     <Typography variant='h6' color='inherit'>
-                        MERN Sceleton
+                        MERN Skeleton
                     </Typography>
                     <Link to='/'>
                         <IconButton aria-label='Home' style={isActive(location, '/')}>

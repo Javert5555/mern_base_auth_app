@@ -92,7 +92,7 @@ const EditProfile = () => {
         <StylizedCard>
             <CardContent>
                 <StylizedTypographyTitle>
-                    Sign Up
+                    Edit Profile
                 </StylizedTypographyTitle>
                 <StylizedTextField id='name' label='Name' value={values.name} onChange={handleChange('name')} margin='normal' />
                 <StylizedTextField id='email' type='email' label='Email' value={values.email} onChange={handleChange('email')} margin='normal' />
