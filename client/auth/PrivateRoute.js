@@ -7,7 +7,7 @@ const PrivateRoute = () => {
     return (
         auth.isAuthenticated() ?
         <Outlet /> :
-        <Navigate to='/signin' state={{ from: location }} />
+        <Navigate to='/signin' state={{ from: location }} replace />
     )
 }
 

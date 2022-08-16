@@ -34,8 +34,6 @@ const StylizedButtonSubmit = styled(Button)(({ theme }) => ({
 
 const Signin = () => {
 
-    const location = useLocation()
-
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -65,7 +63,7 @@ const Signin = () => {
         setValues({ ...values, [name]: target.value })
     }
 
-    const pathname = useLocation().state?.form?.pathname || '/'
+    const pathname = useLocation().state?.from?.pathname || '/'
     
     const { redirectToReferrer } = values
     if (redirectToReferrer) {

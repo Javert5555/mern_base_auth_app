@@ -85,14 +85,14 @@ const EditProfile = () => {
     }
 
     if (values.redirectToProfile) {
-        return <Navigate to={`/user/${values.userId}`} />
+        return <Navigate to={`/user/${values.userId}`} replace />
     }
 
     return (
         <StylizedCard>
             <CardContent>
                 <StylizedTypographyTitle>
-                    Sign Up
+                    Edit Profile
                 </StylizedTypographyTitle>
                 <StylizedTextField id='name' label='Name' value={values.name} onChange={handleChange('name')} margin='normal' />
                 <StylizedTextField id='email' type='email' label='Email' value={values.email} onChange={handleChange('email')} margin='normal' />
