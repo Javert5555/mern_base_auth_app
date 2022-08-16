@@ -1,4 +1,5 @@
 import express from 'express'
+import fs from 'fs'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compress from 'compression'
@@ -57,7 +58,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 app.use('/', userRoutes)
 app.use('/', authRoutes)
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     // res.status(200).send(Template())
     const cache = createCache({ key: 'css' })
     const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache)
