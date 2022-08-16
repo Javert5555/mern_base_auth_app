@@ -2,7 +2,7 @@ import { Avatar, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSe
 import { Person } from '@mui/icons-material'
 import EditIcon from '@mui/icons-material/Edit';
 import React, { useEffect, useState } from 'react'
-import { Navigate, useParams, Link } from 'react-router-dom'
+import { Navigate, useParams, Link, useLocation } from 'react-router-dom'
 import auth from './../auth/auth-helper'
 import { read } from './api-user'
 import DeleteUser from './DeleteUser';
@@ -25,6 +25,7 @@ const Profile = () => {
     const jwt = auth.isAuthenticated()
 
     const params = useParams()
+    const location = useLocation()
 
     useEffect(() => {
         const abortController = new AbortController()
@@ -43,7 +44,7 @@ const Profile = () => {
     }, [params.userId])
 
     if (redirectToSignin) {
-        return <Navigate to='/signin' replace />
+        return <Navigate to='/signin' state={{ from: location }} replace />
     }
 
     return (

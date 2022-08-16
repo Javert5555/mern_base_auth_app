@@ -1,5 +1,4 @@
 import express from 'express'
-import fs from 'fs'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compress from 'compression'
@@ -22,14 +21,14 @@ import authRoutes from './routes/auth.routes'
 
 // comment out before building for production
 import devBundle from './devBundle'
-import App from '../client/App'
+
 import MainRouter from '../client/MainRouter'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
 
-// comment out before building for production
+// may comment out before building for production
 devBundle.compile(app)
 
 app.use(bodyParser.json())
@@ -58,6 +57,7 @@ app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 app.use('/', userRoutes)
 app.use('/', authRoutes)
 
+// TO DO: make ssr routing (fix navigate warning)
 app.get('*', (req, res) => {
     // res.status(200).send(Template())
     const cache = createCache({ key: 'css' })

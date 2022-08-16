@@ -85,7 +85,7 @@ const EditProfile = () => {
     }
 
     if (values.redirectToProfile) {
-        return <Navigate to={`/user/${values.userId}`} />
+        return <Navigate to={`/user/${values.userId}`} replace />
     }
 
     return (

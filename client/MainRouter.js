@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { Box } from '@mui/material'
 import Home from './core/Home'
 import Users from './user/Users'
@@ -22,6 +22,7 @@ const MainRouter = () => (
                 <Route path='/user/edit/:userId' element={<EditProfile />} />
             </Route>
             <Route path='/user/:userId' element={<Profile />} />
+            <Route path='*' element={<Navigate to='/' />} />
         </Routes>
     </Box>
 )
