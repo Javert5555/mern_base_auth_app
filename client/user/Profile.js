@@ -73,7 +73,7 @@ const Profile = () => {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <ListItemText primary={`Joined: ${(new Date(user.created)).toDateString()}`} />
+                    <ListItemText primary={user.about} secondary={`Joined: ${(new Date(user.created)).toDateString()}`} />
                 </ListItem>
             </List>
         </StylizedRootPaper>

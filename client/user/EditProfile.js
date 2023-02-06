@@ -35,6 +35,7 @@ const StylizedButtonSubmit = styled(Button)(({ theme }) => ({
 const EditProfile = () => {
     const [values, setValues] = useState({
         name: '',
+        about: '',
         password: '',
         email: '',
         open: false,
@@ -55,7 +56,7 @@ const EditProfile = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error })
             } else {
-                setValues({ ...values, name: data.name, email: data.email })
+                setValues({ ...values, name: data.name, email: data.email, about: data.about })
             }
         })
         return () => abortController.abort()
@@ -68,6 +69,7 @@ const EditProfile = () => {
     const clickSubmit = () => {
         const user = {
             name: values.name || undefined,
+            about: values.about || undefined,
             email: values.email || undefined,
             password: values.password || undefined
         }
@@ -95,6 +97,14 @@ const EditProfile = () => {
                     Edit Profile
                 </StylizedTypographyTitle>
                 <StylizedTextField id='name' label='Name' value={values.name} onChange={handleChange('name')} margin='normal' />
+                <StylizedTextField
+                    id='multiline-flexible'
+                    label='About'
+                    multiline
+                    rows='2'
+                    value={values.about}
+                    onChange={handleChange('about')}
+                />
                 <StylizedTextField id='email' type='email' label='Email' value={values.email} onChange={handleChange('email')} margin='normal' />
                 <StylizedTextField id='password' type='password' label='Password' value={values.password} onChange={handleChange('password')} margin='normal' />
                 <br /> {
