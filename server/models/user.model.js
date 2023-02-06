@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
-        trime: true,
+        trim: true,
         unique: 'Email already exists',
         match: [/.+\@.+\...+/, 'Please enter a valid email address'],
         required: 'Email is required'
@@ -23,7 +23,11 @@ const UserSchema = new Schema({
         type: String,
         required: 'Password is required'
     },
-    salt: String
+    salt: String,
+    about: {
+        type: String,
+        trim: true
+    }
 })
 
 UserSchema

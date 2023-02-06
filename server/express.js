@@ -52,6 +52,12 @@ app.use(
 )
 app.use(cors())
 
+// For Express to properly handle requests for static files,
+// such as CSS files, images, or client-side embedded JS.
+// With this configuration in place, when the Express app receives a request at a route
+// starting with /dist, it will know to look for the requested static resource in the dist
+// folder before returning the resource in the response. Now, we can load the bundled
+// files from the dist folder in the frontend.
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 app.use('/', userRoutes)

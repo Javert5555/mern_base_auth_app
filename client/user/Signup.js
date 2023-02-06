@@ -40,7 +40,7 @@ const Signup = () => {
         error: ''
     })
 
-    const handleChange = name => ({ target }) => {
+    const handleChange = name => ({ target }) => { // name in this function - is the name of the input field
         setValues({...values, [name]: target.value })
     }
 
